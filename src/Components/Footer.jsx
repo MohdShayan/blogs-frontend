@@ -7,7 +7,7 @@ const Footer = () => {
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: 'url("/footer-gradient.png")',
+          backgroundImage: 'url("/footer-gradient.webp")',
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center bottom",

@@ -3,41 +3,37 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: ""
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    console.log(formData);
 
     try {
-      const response = await axios.post(
-        "http://localhost:3003/user/login",
+      const  response = await axios.post(
+        "http://localhost:3000/user/login",
         formData,
         { withCredentials: true }
       );
 
-      console.log("Login success:", response.data);
+      console.log("Login response:", response);
 
       if (response.data.success) {
-        navigate("/");
+        navigate("/home");
+      } else {
+        setError(data.message);
       }
     } catch (error) {
       console.error("Login error:", error);
-      if (error.response && error.response.status === 401) {
+      if (error.response?.status === 401) {
         setError("Invalid email or password");
       } else {
         setError("Something went wrong. Please try again.");
@@ -55,8 +51,7 @@ const Login = () => {
         playsInline
         src="./hero.webm"
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-black/75 z-10"></div>
-
+      <div className="absolute top-0 left-0 w-full h-full bg-black/75 z-10" />
       <div className="relative z-20 w-full max-w-md bg-grey/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-lg">
         <h2 className="text-3xl font-bold text-white text-center mb-6">
           Log In to{" "}
@@ -82,6 +77,7 @@ const Login = () => {
               placeholder="Enter your email"
             />
           </div>
+
           <div>
             <label className="block text-sm text-white mb-1">Password</label>
             <input
