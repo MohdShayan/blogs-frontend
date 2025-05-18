@@ -1,3 +1,4 @@
+import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
           Get Started for Free
         </a>
       </div>
+      <Footer />
     </div>
   );
 };

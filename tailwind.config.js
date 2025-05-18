@@ -7,6 +7,7 @@ export const theme = {
                 300: 'oklch(0.87 0 0)', // 👈 custom color
             },
         },
+        
     },
 };
 export const plugins = [];
