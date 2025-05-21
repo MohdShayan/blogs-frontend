@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AllBlogs = () => {
   const [showForm, setShowForm] = useState(false);
@@ -9,11 +10,14 @@ const AllBlogs = () => {
   const [message, setMessage] = useState("");
   const [blogs, setBlogs] = useState([]);
 
+  const navigate = useNavigate();
+
   const fetchBlogs = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/blogs", {
         withCredentials: true,
       });
+      console.log("Fetched Blogs:", response.data.data.allBlogs);
       setBlogs(response.data.data.allBlogs);
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -72,6 +76,7 @@ const AllBlogs = () => {
             <div
               key={blog._id}
               className="bg-white bg-opacity-10 backdrop-blur-xl border border-white border-opacity-20 rounded-2xl shadow-lg overflow-hidden text-white hover:scale-105 transition-transform duration-300"
+              onClick={() => navigate(`/blogs/${blog._id}`)}
             >
               <img
                 src={`http://localhost:3000${blog.coverImageURL}`}
