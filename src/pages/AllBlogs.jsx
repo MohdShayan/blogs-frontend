@@ -75,7 +75,7 @@ const AllBlogs = () => {
           {blogs.map((blog) => (
             <div
               key={blog._id}
-              className="bg-white bg-opacity-10 backdrop-blur-xl border border-white border-opacity-20 rounded-2xl shadow-lg overflow-hidden text-white hover:scale-105 transition-transform duration-300"
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg overflow-hidden text-white hover:scale-105 hover:shadow-xl hover:shadow-white/10 transition-transform duration-300 cursor-pointer"
               onClick={() => navigate(`/blogs/${blog._id}`)}
             >
               <img
@@ -83,101 +83,108 @@ const AllBlogs = () => {
                 alt="Cover"
                 className="w-full h-52 object-cover"
               />
-              <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">{blog.title}</h2>
-                <p className="text-sm text-gray-300 mb-4 line-clamp-3">{blog.body}</p>
-                <div className="text-xs text-gray-400 flex justify-between items-center">
+              <div className="p-5">
+                <h2 className="text-xl font-bold mb-2 text-white">{blog.title}</h2>
+                <p className="text-sm text-white/80 mb-4 line-clamp-3">{blog.body}</p>
+                <div className="text-xs text-white/50 flex justify-between items-center">
                   <span>By: {blog.createdBy?.name || "Unknown"}</span>
                   <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
+
           ))}
         </div>
       )}
 
       {/* Modal for Creating Blog */}
       {showForm && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
-          <div className="relative w-[90%] max-w-xl">
-            <button
-              onClick={() => setShowForm(false)}
-              className="absolute top-2 right-3 text-white text-2xl font-bold hover:text-red-500"
-            >
-              &times;
-            </button>
+  <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+    <div className="relative w-[90%] max-w-xl">
+      <button
+        onClick={() => setShowForm(false)}
+        className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-red-400 cursor-pointer z-30"
+      >
+        &times;
+      </button>
 
-            <div className="bg-white bg-opacity-10 backdrop-blur-xl border border-black border-opacity-20 rounded-2xl shadow-2xl p-6 text-black">
-              <h2 className="text-xl font-bold mb-4 text-center">Create New Blog Post</h2>
-              {message && <p className="text-sm text-center mb-4">{message}</p>}
+      <div className="relative z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-lg text-white">
+        <h2 className="text-2xl font-bold text-center mb-4">
+          Create New{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-t from-gray-300 to-white">
+            Blog Post
+          </span>
+        </h2>
 
-              <form
-                onSubmit={handleSubmit}
-                encType="multipart/form-data"
-                className="space-y-4"
-              >
-                {/* Title */}
-                <div>
-                  <label htmlFor="title" className="block mb-1 font-semibold text-black">
-                    Title
-                  </label>
-                  <input
-                    id="title"
-                    type="text"
-                    required
-                    placeholder="Enter blog title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="w-full p-3 rounded bg-white bg-opacity-20 text-black placeholder-white border border-black border-opacity-30 focus:outline-none"
-                  />
-                </div>
+        {message && (
+          <p className="text-sm text-center mb-4 text-pink-400">{message}</p>
+        )}
 
-                {/* Body */}
-                <div>
-                  <label htmlFor="body" className="block mb-1 font-semibold text-black">
-                    Body
-                  </label>
-                  <textarea
-                    id="body"
-                    required
-                    placeholder="Write your blog content here..."
-                    rows="5"
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
-                    className="w-full p-3 rounded bg-white bg-opacity-20 text-black placeholder-white border border-black border-opacity-30 focus:outline-none"
-                  />
-                </div>
-
-                {/* Cover Image */}
-                <div>
-                  <label
-                    htmlFor="coverImage"
-                    className="block mb-1 font-semibold text-black"
-                  >
-                    Cover Image
-                  </label>
-                  <input
-                    id="coverImage"
-                    type="file"
-                    name="coverImage"
-                    accept="image/*"
-                    required
-                    onChange={(e) => setCoverImage(e.target.files[0])}
-                    className="w-full file:bg-pink-500 file:text-white file:px-4 file:py-2 file:rounded-full file:border-0 file:cursor-pointer text-sm"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="bg-pink-500 hover:bg-pink-600 w-full py-2 rounded text-white font-semibold"
-                >
-                  Submit Blog
-                </button>
-              </form>
-            </div>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className="space-y-4"
+        >
+          {/* Title */}
+          <div>
+            <label htmlFor="title" className="block mb-1 text-sm">
+              Title
+            </label>
+            <input
+              id="title"
+              type="text"
+              required
+              placeholder="Enter blog title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+            />
           </div>
-        </div>
-      )}
+
+          {/* Body */}
+          <div>
+            <label htmlFor="body" className="block mb-1 text-sm">
+              Body
+            </label>
+            <textarea
+              id="body"
+              required
+              placeholder="Write your blog content here..."
+              rows="5"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg bg-white/10 text-white border border-white/20 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+            />
+          </div>
+
+          {/* Cover Image */}
+          <div>
+            <label htmlFor="coverImage" className="block mb-1 text-sm">
+              Cover Image
+            </label>
+            <input
+              id="coverImage"
+              type="file"
+              name="coverImage"
+              accept="image/*"
+              required
+              onChange={(e) => setCoverImage(e.target.files[0])}
+              className="w-full file:bg-pink-500 file:text-white file:px-4 file:py-2 file:rounded-full file:border-0 file:cursor-pointer text-sm bg-transparent text-white"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-t from-gray-300 to-white text-black font-semibold py-2 rounded-xl hover:from-pink-300 hover:to-white transition duration-150 cursor-pointer shadow-lg hover:shadow-pink-300/30"
+          >
+            Submit Blog
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

@@ -9,6 +9,7 @@ import AllBlogs from "./pages/AllBlogs";
 import SingleBlog from "./Components/SingleBlog";
 
 
+
 const Main = () => {
   return (
     <Routes>
@@ -19,10 +20,13 @@ const Main = () => {
       <Route path="/explore" element={<ExploreTrends />} />
       <Route path="/blogs" element={<AllBlogs />} />
       <Route path="/blogs/:blogId" element={<SingleBlog />} />
+      
 
       
     </Routes>
   );
 };
+
+
 
 export default Main;

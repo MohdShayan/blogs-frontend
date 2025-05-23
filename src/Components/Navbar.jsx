@@ -10,27 +10,40 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div
-      className="flex sticky top-2 flex-col w-full items-center justify-center mx-auto px-10 py-2 z-50 transition-all duration-300"
-      style={{
-        maxWidth: "1000px",
-        backdropFilter: scrolled ? "blur(10px)" : "blur(0px)",
-        boxShadow: scrolled
-          ? `rgba(34, 42, 53, 0.06) 0px 0px 24px,
-             rgba(0, 0, 0, 0.05) 0px 1px 1px,
-             rgba(34, 42, 53, 0.04) 0px 0px 0px 1px,
-             rgba(34, 42, 53, 0.08) 0px 0px 4px,
-             rgba(47, 48, 55, 0.05) 0px 16px 68px,
-             rgba(255, 255, 255, 0.1) 0px 1px 0px inset`
-          : "none",
-        width: scrolled ? "90%" : "100%",
-        borderRadius: "2rem",
-        paddingLeft: scrolled ? "12px" : "0px",
-        paddingRight: scrolled ? "12px" : "0px",
-        backgroundColor: scrolled ? "rgba(10, 10, 10, 0.8)" : "transparent",
-      }}
-    >
-      <div className="flex flex-row justify-between items-center w-full max-w-5xl px-4 font-bold">
+   <div
+  className="fixed top-2 left-1/2 flex flex-col items-center justify-center z-50 transition-all duration-300"
+  style={{
+    maxWidth: "1000px",
+    width: scrolled ? "90%" : "100%",
+    transform: "translateX(-50%)",
+    backdropFilter: scrolled ? "blur(8px)" : "blur(0px)",
+    boxShadow: scrolled
+      ? `rgba(34, 42, 53, 0.06) 0px 0px 24px,
+         rgba(0, 0, 0, 0.05) 0px 1px 1px,
+         rgba(34, 42, 53, 0.04) 0px 0px 0px 1px,
+         rgba(34, 42, 53, 0.08) 0px 0px 4px,
+         rgba(47, 48, 55, 0.05) 0px 16px 68px,
+         rgba(255, 255, 255, 0.1) 0px 1px 0px inset`
+      : "none",
+    borderRadius: "2rem",
+    paddingLeft: scrolled ? "12px" : "0px",
+    paddingRight: scrolled ? "12px" : "0px",
+    backgroundColor: scrolled ? "rgba(30, 30, 30, 0.5)" : "transparent",
+boxShadow: scrolled
+  ? `rgba(34, 42, 53, 0.06) 0px 0px 24px,
+     rgba(0, 0, 0, 0.05) 0px 1px 1px,
+     rgba(34, 42, 53, 0.04) 0px 0px 0px 1px,
+     rgba(34, 42, 53, 0.08) 0px 0px 4px,
+     rgba(47, 48, 55, 0.05) 0px 16px 68px,
+     rgba(255, 255, 255, 0.1) 0px 1px 0px inset,
+     0 0 10px 3px rgba(255, 244, 229, 0.3)`
+  : "none",
+
+
+  }}
+>
+
+      <div className="flex flex-row justify-between items-center w-full max-w-5xl px-4 py-2 font-bold">
         <a
           href="/"
           className="font-normal flex space-x-1 items-center text-base mr-4 text-black relative z-20"
