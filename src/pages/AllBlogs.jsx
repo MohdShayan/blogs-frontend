@@ -17,8 +17,9 @@ const AllBlogs = () => {
       const response = await axios.get("http://localhost:3000/api/blogs", {
         withCredentials: true,
       });
-      console.log("Fetched Blogs:", response.data.data.allBlogs);
+   
       setBlogs(response.data.data.allBlogs);
+     
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
