@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 const AllBlogs = () => {
   const [showForm, setShowForm] = useState(false);
@@ -57,9 +58,19 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center py-10 px-4">
-      <h1 className="text-3xl font-bold mb-2">All Blogs</h1>
-      <p className="text-gray-300 mb-6">Explore or share your stories with the world</p>
+    <>
+    <Navbar />
+    <div>
+        <img
+          src="/X.png"
+          alt="banner"
+          className="w-full"
+        />
+      </div>
+    <div className="min-h-screen bg-[#101720] text-white  py-10">
+      <div className="flex flex-col mb-8 justify-items-start items-start px-4 sm:px-6">
+      <h1 className="text-3xl font-bold ">All Articles</h1>
+      </div>
 
       <button
         className="bg-pink-400 text-black px-6 py-3 rounded-full hover:bg-pink-500 mb-6"
@@ -67,7 +78,7 @@ const AllBlogs = () => {
       >
         ✍️ Write a New Blog
       </button>
-
+<div className="flex flex-col items-center">
       {/* Blog Cards */}
       {blogs.length === 0 ? (
         <p className="text-gray-400">No blogs yet. Be the first to write one!</p>
@@ -94,9 +105,10 @@ const AllBlogs = () => {
               </div>
             </div>
 
-          ))}
+))}
         </div>
       )}
+      </div>
 
       {/* Modal for Creating Blog */}
       {showForm && (
@@ -187,6 +199,7 @@ const AllBlogs = () => {
 )}
 
     </div>
+    </>
   );
 };
 

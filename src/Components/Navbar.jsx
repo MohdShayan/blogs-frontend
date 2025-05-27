@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../authContext"; 
+import axios from "axios";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { user, setUser } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await axios.get("http://localhost:3000/user/logout", {
+        withCredentials: true,
+      });
+      setUser(null); 
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
 
   return (
     <div
@@ -69,20 +83,31 @@ const Navbar = () => {
 
         {/* Buttons */}
         <div className="flex items-center gap-2">
-          <a
-            href="/login"
-            className="hidden md:block rounded-lg border border-transparent text-sm font-medium text-zinc-950 dark:text-white hover:bg-zinc-200/40 dark:hover:bg-white/10 transition-colors px-4 py-2"
-          >
-            Log In
-          </a>
-          <a
-            href="/signup"
-            className="inline-flex justify-center items-center text-sm font-bold p-[2px] bg-white/10 rounded-2xl"
-          >
-            <div className="px-3 py-[5px] bg-gradient-to-t from-gray-300 to-white hover:from-blue-300 hover:to-blue-50 rounded-xl text-black hover:text-blue-900 inline-flex items-center gap-2 transition-all duration-150">
-              Sign Up
-            </div>
-          </a>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="hidden md:block rounded-lg border border-transparent text-sm font-medium text-zinc-950 dark:text-white hover:bg-zinc-200/40 dark:hover:bg-white/10 transition-colors px-4 py-2"
+            >
+              Log Out
+            </button>
+          ) : (
+            <>
+              <a
+                href="/login"
+                className="hidden md:block rounded-lg border border-transparent text-sm font-medium text-zinc-950 dark:text-white hover:bg-zinc-200/40 dark:hover:bg-white/10 transition-colors px-4 py-2"
+              >
+                Log In
+              </a>
+              <a
+                href="/signup"
+                className="inline-flex justify-center items-center text-sm font-bold p-[2px] bg-white/10 rounded-2xl"
+              >
+                <div className="px-3 py-[5px] bg-gradient-to-t from-gray-300 to-white hover:from-blue-300 hover:to-blue-50 rounded-xl text-black hover:text-blue-900 inline-flex items-center gap-2 transition-all duration-150">
+                  Sign Up
+                </div>
+              </a>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Icon */}

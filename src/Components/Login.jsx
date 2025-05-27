@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../authContext"; // adjust if needed
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useAuth(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,21 +17,28 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    console.log(formData);
 
     try {
-      const  response = await axios.post(
+      const response = await axios.post(
         "http://localhost:3000/user/login",
         formData,
         { withCredentials: true }
       );
 
-      console.log("Login response:", response);
-
       if (response.data.success) {
-        navigate("/home");
+     
+        const meRes = await axios.get("http://localhost:3000/user/me", {
+          withCredentials: true,
+        });
+
+        if (meRes.data.success) {
+          setUser(meRes.data.user); 
+          navigate("/home");
+        } else {
+          setError("Login succeeded but failed to fetch user.");
+        }
       } else {
-        setError(data.message);
+        setError(response.data.message || "Login failed");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -42,14 +51,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black relative">
+    <div className="min-h-screen flex items-center justify-center bg-black relative ">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         autoPlay
         muted
         loop
         playsInline
-        src="./hero.webm"
+        src="/hero.webm"
       />
       <div className="absolute top-0 left-0 w-full h-full bg-black/75 z-10" />
       <div className="relative z-20 w-full max-w-md bg-grey/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-lg">
