@@ -3,21 +3,20 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="w-full relative pt-20 pb-5 my-8 text-gray-100">
-
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url("/footer-gradient.webp")',
+          backgroundImage: 'url("/footer-blue.PNG")',
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center bottom",
-          backgroundColor: "rgba(0,0,0,0.8)",
+          backgroundColor: "rgba(0,0,10,0.6)",
           backgroundBlendMode: "multiply",
         }}
       />
 
       {/* content */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="relative grid gap-16 md:grid-cols-3">
           <div>
             <div className="space-y-5">
@@ -114,13 +113,11 @@ const Footer = () => {
           </div>
         </div>
 
-       
         <div className="mt-16 text-center text-sm text-gray-400">
           © {new Date().getFullYear()} TrendWrite. All rights reserved.
         </div>
 
-      
-        <div className="mt-6 flex flex-col items-center space-y-3 text-gray-300 text-sm">
+        <div className="mt-6 flex flex-col items-center space-y-3 text-gray-300 text-sm ">
           <h3 className="font-playwrite text-[25px]">
             Made with{" "}
             <span aria-label="heart" role="img">
@@ -129,8 +126,6 @@ const Footer = () => {
             By Shayan
           </h3>
 
-
-          
           <div className="flex space-x-6">
             <a
               href="https://linkedin.com/in/mohdshayan"
@@ -139,7 +134,6 @@ const Footer = () => {
               className=" hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
               aria-label="LinkedIn"
             >
-             
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -174,9 +168,15 @@ const Footer = () => {
               className="hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
               aria-label="GitHub"
             >
-            
-            <img src="/gitHUb1.png" alt="GitHub" className="z-30" width={50} height={50}  />
-
+              <img
+                src="/gitHUb1.png"
+                alt="GitHub"
+                className="z-30"
+                width={40}
+                height={40}
+                border="1px solid transparent"
+                style={{ borderRadius: "30%" }}
+              />
             </a>
             <a
               href="mailto:shayanqureshi2411@gmail.com"
@@ -185,11 +185,35 @@ const Footer = () => {
               className="hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
               aria-label="GitHub"
             >
-            
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
-            <path fill="#4caf50" d="M45,16.2l-5,2.75l-5,4.75L35,40h7c1.657,0,3-1.343,3-3V16.2z"></path><path fill="#1e88e5" d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"></path><polygon fill="#e53935" points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"></polygon><path fill="#c62828" d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C9.132,8.301,8.228,8,7.298,8h0C4.924,8,3,9.924,3,12.298z"></path><path fill="#fbc02d" d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341C38.868,8.301,39.772,8,40.702,8h0 C43.076,8,45,9.924,45,12.298z"></path>
-            </svg>
-
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="50"
+                height="50"
+                viewBox="0 0 48 48"
+              >
+                <path
+                  fill="#4caf50"
+                  d="M45,16.2l-5,2.75l-5,4.75L35,40h7c1.657,0,3-1.343,3-3V16.2z"
+                ></path>
+                <path
+                  fill="#1e88e5"
+                  d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"
+                ></path>
+                <polygon
+                  fill="#e53935"
+                  points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"
+                ></polygon>
+                <path
+                  fill="#c62828"
+                  d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C9.132,8.301,8.228,8,7.298,8h0C4.924,8,3,9.924,3,12.298z"
+                ></path>
+                <path
+                  fill="#fbc02d"
+                  d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341C38.868,8.301,39.772,8,40.702,8h0 C43.076,8,45,9.924,45,12.298z"
+                ></path>
+              </svg>
             </a>
           </div>
         </div>

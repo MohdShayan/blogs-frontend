@@ -103,7 +103,7 @@ const App = () => {
               className={`p-4 border rounded-lg transition duration-300 ${
                 i === highlightIndex
                   ? "border-blue-500 shadow-md shadow-blue-500/50 bg-blue-900/20"
-                  : "border-white/20 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/30"
+                  : "border-white/20"
               }`}
             >
               <div className="text-2xl sm:text-3xl font-bold mb-1">{i + 1}</div>
@@ -122,7 +122,7 @@ const App = () => {
         <div className="bg-white/5 p-6 rounded-lg max-w-2xl mx-auto border border-white/10">
           <p className="text-lg sm:text-xl font-semibold mb-2">🌍 Trending Topic: "AI vs Human Creativity"</p>
           <p className="text-gray-300 text-sm sm:text-base">
-            Your next post will explore this viral topic from X with a fresh perspective.
+            Write a Blog on the most trending Tech Topic 
           </p>
         </div>
       </div>
