@@ -64,7 +64,7 @@ const AllBlogs = () => {
                   onClick={() => navigate(`/blogs/${blog._id}`)}
                 >
                   <img
-                    src={`http://localhost:3000${blog.coverImageURL}`}
+                    src={`${blog.coverImageURL}`}
                     alt="Cover"
                     className="w-full h-52 object-cover"
                   />

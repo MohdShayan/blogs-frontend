@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 const SingleBlog = () => {
   const { blogId } = useParams();
@@ -79,12 +80,14 @@ const SingleBlog = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#101720] text-white flex flex-col items-center py-10 px-4 sm:px-6">
-      <div className="max-w-5xl w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-lg">
+    <>
+    <Navbar />
+    <div className="min-h-screen bg-[#101720] text-white flex flex-col items-center py-10 px-4 sm:px-6 ">
+      <div className="max-w-5xl w-full bg-white/10 backdrop-blur-md border border-white/20 mt-10 rounded-2xl p-8 shadow-lg">
         <h1 className="text-4xl font-bold mb-6 text-white">{blog.title}</h1>
 
         <img
-          src={`http://localhost:3000${blog.coverImageURL}`}
+          src={`${blog.coverImageURL}`}
           alt={blog.title}
           className="w-full max-h-[400px] object-cover rounded-xl mb-4"
         />
@@ -147,6 +150,7 @@ const SingleBlog = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
