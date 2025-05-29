@@ -1,27 +1,35 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchUser = async () => {
+      setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/user/me", { withCredentials: true });
+        const res = await axios.get("http://localhost:3000/user/me", {
+          withCredentials: true,
+        });
         if (res.data.success) {
           setUser(res.data.user);
+        } else {
+          setUser(null);
         }
-      } catch (err) {
+      } catch {
         setUser(null);
       } finally {
         setLoading(false);
       }
     };
+
     fetchUser();
-  }, []);
+  }, [location]);
 
   return (
     <AuthContext.Provider value={{ user, setUser, loading }}>

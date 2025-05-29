@@ -29,7 +29,7 @@ const App = () => {
           playsInline
           src="./hero.webm"
         />
-        <div className="relative z-10 flex flex-col justify-center items-center h-full px-4 text-center">
+        <div id="home" className="relative z-10 flex flex-col justify-center items-center h-full px-4 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-snug max-w-4xl">
             <span className="inline-block bg-clip-text text-transparent bg-gradient-to-t from-gray-300 to-white">
               AI-Powered&nbsp;
@@ -53,7 +53,7 @@ const App = () => {
       </div>
 
       {/* Welcome & Why TrendWrite */}
-      <div className="z-10 flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 text-center bg-gray-900/50 min-h-screen">
+      <div  id="about" className="z-10 flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 text-center bg-gray-900/50 min-h-screen">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to TrendWrite</h1>
         <p className="text-base sm:text-lg max-w-2xl mb-6">
           Discover blogs written by AI on what’s trending right now on X. No manual effort. Just insights.
@@ -94,8 +94,8 @@ const App = () => {
 
       {/* How It Works */}
        
-      <div className="z-10 px-4 sm:px-6 py-12 sm:py-16 bg-gray-900/50 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10">How It Works</h2>
+      <div id="howitworks" className="z-10 px-4 sm:px-6 py-12 sm:py-16  bg-gray-900/50 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-10 mt-5">How It Works</h2>
         <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
           {steps.map((step, i) => (
             <div

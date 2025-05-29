@@ -8,6 +8,8 @@ import AllBlogs from "./pages/AllBlogs";
 import SingleBlog from "./Components/SingleBlog";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthProvider } from "./authContext";
+import CreateBlog from "./pages/CreateBlog";
+import MyBlogs from "./pages/MyBlogs";
 
 const Main = () => {
   return (
@@ -47,6 +49,22 @@ const Main = () => {
           element={
             <ProtectedRoute>
               <SingleBlog />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/write"
+          element={
+            <ProtectedRoute>
+              <CreateBlog/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/myblogs"
+          element={
+            <ProtectedRoute>
+              <MyBlogs />
             </ProtectedRoute>
           }
         />

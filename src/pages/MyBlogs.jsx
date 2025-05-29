@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
-const AllBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
+const MyBlogs = () => {
+  const [myBlogs, setMyBlogs] = useState([]);
   const navigate = useNavigate();
 
-  const fetchBlogs = async () => {
+  const fetchMyBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/blogs", {
+      const res = await axios.get("http://localhost:3000/api/myblogs", {
         withCredentials: true,
       });
-      setBlogs(response.data.data.allBlogs);
+      setMyBlogs(res.data.data.myBlogs);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
+      console.error("Error fetching your blogs:", error);
     }
   };
 
   useEffect(() => {
-    fetchBlogs();
+    fetchMyBlogs();
   }, []);
 
   return (
@@ -41,23 +41,23 @@ const AllBlogs = () => {
 
           {/* Header and Button */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-            <h1 className="text-3xl font-bold mb-4 sm:mb-0">📰 All Articles</h1>
+            <h1 className="text-3xl font-bold mb-4 sm:mb-0">📚 My Blogs</h1>
             <button
               className="bg-gradient-to-t from-blue-300 via-blue-100 to-white text-black font-semibold px-6 py-2 rounded-full shadow-lg hover:from-blue-400 hover:via-blue-200 transition duration-150"
-              onClick={() => navigate("/myblogs")}
+              onClick={() => navigate("/write")}
             >
-              📚 My Blogs
+              ✍️ Create New Blog
             </button>
           </div>
 
           {/* Blog Grid */}
-          {blogs.length === 0 ? (
+          {myBlogs.length === 0 ? (
             <p className="text-gray-400 text-center">
-              No blogs yet. Be the first to write one!
+              You haven’t written any blogs yet.
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogs.map((blog) => (
+              {myBlogs.map((blog) => (
                 <div
                   key={blog._id}
                   className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg overflow-hidden text-white hover:scale-105 hover:shadow-xl hover:shadow-white/10 transition-transform duration-300 cursor-pointer"
@@ -76,7 +76,7 @@ const AllBlogs = () => {
                       {blog.body}
                     </p>
                     <div className="text-xs text-white/50 flex justify-between items-center">
-                      <span>By: {blog.createdBy?.name || "Unknown"}</span>
+                      <span>By: You</span>
                       <span>
                         {new Date(blog.createdAt).toLocaleDateString()}
                       </span>
@@ -92,4 +92,4 @@ const AllBlogs = () => {
   );
 };
 
-export default AllBlogs;
+export default MyBlogs;
