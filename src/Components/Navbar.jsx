@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../authContext"; 
+import { useAuth } from "../authContext";
 import axios from "axios";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const { user, setUser } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -14,10 +15,13 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("https://blogs-backend-production.up.railway.app/user/logout", {
-        withCredentials: true,
-      });
-      setUser(null); 
+      await axios.get(
+        "https://blogs-backend-production.up.railway.app/user/logout",
+        {
+          withCredentials: true,
+        }
+      );
+      setUser(null);
     } catch (err) {
       console.error("Logout failed:", err);
     }
@@ -69,7 +73,7 @@ const Navbar = () => {
             { href: "/#about", label: "About" },
             { href: "/#howitworks", label: "Working" },
             { href: "/write", label: "Write Blog" },
-
+            { href: "/schedule", label: "Schedule Blog" },
           ].map((item) => (
             <a
               key={item.href}
@@ -111,7 +115,10 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <button className="lg:hidden size-6 fill-white">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden size-6 fill-white"
+        >
           <svg
             viewBox="0 0 20 20"
             aria-hidden="true"
@@ -120,6 +127,79 @@ const Navbar = () => {
             <path d="M2 6.75C2 6.33579 2.33579 6 2.75 6H17.25C17.6642 6 18 6.33579 18 6.75C18 7.16421 17.6642 7.5 17.25 7.5H2.75C2.33579 7.5 2 7.16421 2 6.75ZM2 13.25C2 12.8358 2.33579 12.5 2.75 12.5H17.25C17.6642 12.5 18 12.8358 18 13.25C18 13.6642 17.6642 14 17.25 14H2.75C2.33579 14 2 13.6642 2 13.25Z" />
           </svg>
         </button>
+        {/* Mobile Menu Content */}
+{isMobileMenuOpen && (
+  <div
+  className="fixed top-14 left-1/2 flex flex-col items-center justify-center z-50 transition-all duration-300"
+  style={{
+    maxWidth: "1200px",
+    width: scrolled ? "95%" : "100%",
+    transform: "translateX(-50%)",
+    backdropFilter: "blur(8px)",
+    borderRadius: "1rem 1rem 2rem 2rem",  
+    paddingLeft: scrolled ? "10px" : "0px",
+    paddingRight: scrolled ? "10px" : "0px",
+    backgroundColor:  "rgba(30, 30, 30, 0.6)" ,
+    boxShadow: scrolled
+      ? `rgba(34, 42, 53, 0.06) 0px 0px 24px,
+         rgba(0, 0, 0, 0.05) 0px 1px 1px,
+         rgba(34, 42, 53, 0.04) 0px 0px 0px 1px,
+         rgba(34, 42, 53, 0.08) 0px 0px 4px,
+         rgba(47, 48, 55, 0.05) 0px 16px 68px,
+         rgba(255, 255, 255, 0.1) 0px 1px 0px inset,
+         0 0 12px 4px rgba(0, 153, 255, 0.2)`
+      : "none",
+  }}
+>
+
+    {[
+      { href: "/home", label: "Home" },
+      { href: "/#about", label: "About" },
+      { href: "/#howitworks", label: "Working" },
+      { href: "/write", label: "Write Blog" },
+      { href: "/schedule", label: "Schedule Blog" },
+    ].map((item) => (
+      <a
+        key={item.href}
+        href={item.href}
+        onClick={() => setIsMobileMenuOpen(false)}
+        className="block w-full px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+
+    {user ? (
+      <button
+        onClick={() => {
+          handleLogout();
+          setIsMobileMenuOpen(false);
+        }}
+        className="block w-full text-left px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+      >
+        Log Out
+      </button>
+    ) : (
+      <>
+        <a
+          href="/login"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="block w-full px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+        >
+          Log In
+        </a>
+        <a
+          href="/signup"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="block w-full px-4 py-2 text-black bg-gradient-to-t from-gray-300 to-white hover:from-blue-300 hover:to-blue-50 rounded-xl font-semibold text-center"
+        >
+          Sign Up
+        </a>
+      </>
+    )}
+  </div>
+)}
+
       </div>
     </div>
   );

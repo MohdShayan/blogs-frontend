@@ -19,7 +19,6 @@ const Main = () => {
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/schedule" element={<ScheduleBlogs />} />
 
         {/* Protected Routes */}
         <Route
@@ -27,6 +26,14 @@ const Main = () => {
           element={
             <ProtectedRoute>
               <AllBlogs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <ProtectedRoute>
+              <ScheduleBlogs />
             </ProtectedRoute>
           }
         />
