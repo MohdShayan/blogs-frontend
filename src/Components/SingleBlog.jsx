@@ -20,7 +20,7 @@ const SingleBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/blogs/${blogId}`, {
+        const res = await axios.get(`https://blogs-backend-production.up.railway.app/api/blogs/${blogId}`, {
           withCredentials: true,
         });
         setBlog(res.data.data.blogPost);
@@ -33,7 +33,7 @@ const SingleBlog = () => {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/user/me`, {
+        const res = await axios.get(`https://blogs-backend-production.up.railway.app/user/me`, {
           withCredentials: true,
         });
         setUser(res.data.user);
@@ -44,7 +44,7 @@ const SingleBlog = () => {
 
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/comment/${blogId}`, {
+        const res = await axios.get(`https://blogs-backend-production.up.railway.app/api/comment/${blogId}`, {
           withCredentials: true,
         });
         setComments(res.data.data.comments);
@@ -64,7 +64,7 @@ const SingleBlog = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/comment/${blogId}`,
+        `https://blogs-backend-production.up.railway.app/api/comment/${blogId}`,
         { content: commentText },
         { withCredentials: true }
       );

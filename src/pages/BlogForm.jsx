@@ -16,7 +16,7 @@ const BlogForm = () => {
     formData.append('coverImage', coverImage) 
 
     try {
-      const res = await axios.post('http://localhost:3000/api/upload', formData, {
+      const res = await axios.post('https://blogs-backend-production.up.railway.app/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

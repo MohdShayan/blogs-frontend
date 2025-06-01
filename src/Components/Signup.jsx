@@ -26,7 +26,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/signup",
+        "https://blogs-backend-production.up.railway.app/user/signup",
         formData,
         { withCredentials: true }
       );

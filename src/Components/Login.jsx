@@ -20,14 +20,14 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/login",
+        "https://blogs-backend-production.up.railway.app/user/login",
         formData,
         { withCredentials: true }
       );
 
       if (response.data.success) {
      
-        const meRes = await axios.get("http://localhost:3000/user/me", {
+        const meRes = await axios.get("https://blogs-backend-production.up.railway.app/user/me", {
           withCredentials: true,
         });
 

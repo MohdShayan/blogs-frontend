@@ -9,7 +9,7 @@ const AllBlogs = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/blogs", {
+      const response = await axios.get("https://blogs-backend-production.up.railway.app/api/blogs", {
         withCredentials: true,
       });
       setBlogs(response.data.data.allBlogs);

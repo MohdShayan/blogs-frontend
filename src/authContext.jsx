@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/user/me", {
+        const res = await axios.get("https://blogs-backend-production.up.railway.app/user/me", {
           withCredentials: true,
         });
         if (res.data.success) {

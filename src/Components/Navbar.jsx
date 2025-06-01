@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:3000/user/logout", {
+      await axios.get("https://blogs-backend-production.up.railway.app/user/logout", {
         withCredentials: true,
       });
       setUser(null); 

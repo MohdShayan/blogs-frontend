@@ -23,7 +23,7 @@ const ScheduleBlogs = () => {
     try {
       setKeyMessage("Saving...");
       await axios.post(
-        "http://localhost:3000/user/api/save-key",
+        "https://blogs-backend-production.up.railway.app/user/api/save-key",
         { groqApiKey: apiKey },
         { withCredentials: true }
       );
@@ -46,7 +46,7 @@ const ScheduleBlogs = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/schedule-blog",
+        "https://blogs-backend-production.up.railway.app/api/schedule-blog",
         {
           title,
           publishAt: date,
@@ -66,7 +66,7 @@ const ScheduleBlogs = () => {
 
   const fetchScheduledBlogs = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/scheduled", {
+      const res = await axios.get("https://blogs-backend-production.up.railway.app/api/scheduled", {
         withCredentials: true,
       });
       setScheduledBlogs(res.data.data.scheduledBlogs || []);
