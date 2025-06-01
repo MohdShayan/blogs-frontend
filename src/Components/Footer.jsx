@@ -36,7 +36,7 @@ const Footer = () => {
               <div>
                 <a
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/api"
+                  href="#"
                 >
                   API
                 </a>
@@ -54,7 +54,7 @@ const Footer = () => {
               <div>
                 <a
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/about"
+                  href="https://x.com/Mohd_Shayan24" target="_blank" rel="noopener noreferrer"
                 >
                   About
                 </a>
