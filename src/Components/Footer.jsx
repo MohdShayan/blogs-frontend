@@ -30,7 +30,7 @@ const Footer = () => {
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
                   href="/"
                 >
-                  TrendWrite Blog Platform
+                  BlogX Blog Platform
                 </a>
               </div>
               <div>
@@ -114,7 +114,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-16 text-center text-sm text-gray-400">
-          © {new Date().getFullYear()} TrendWrite. All rights reserved.
+          © {new Date().getFullYear()} BlogX. All rights reserved.
         </div>
 
         <div className="mt-6 flex flex-col items-center space-y-3 text-gray-300 text-sm ">

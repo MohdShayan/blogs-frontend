@@ -52,9 +52,9 @@ const App = () => {
         </div>
       </div>
 
-      {/* Welcome & Why TrendWrite */}
+      {/* Welcome & Why BlogX */}
       <div  id="about" className="z-10 flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-20 text-center bg-gray-900/50 min-h-screen">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to TrendWrite</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Welcome to BlogX</h1>
         <p className="text-base sm:text-lg max-w-2xl mb-6">
           Discover blogs written by AI on what’s trending right now on X. No manual effort. Just insights.
         </p>
@@ -65,7 +65,7 @@ const App = () => {
           Get Started for Free
         </a>
 
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6">Why Choose TrendWrite?</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6">Why Choose BlogX?</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-5xl">
           {[
             {
@@ -137,7 +137,7 @@ const App = () => {
   href="/signup"
   className="bg-gradient-to-t from-white to-gray-100 text-black font-semibold px-6 py-3 rounded-lg transition duration-300 hover:from-blue-300 hover:to-blue-50"
 >
-  Join TrendWrite Now
+  Join BlogX Now
 </a>
 
       </div>

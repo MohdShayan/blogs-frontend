@@ -24,7 +24,7 @@ export default function Home() {
           <h1 className="text-4xl font-bold mb-4">
             Welcome to{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-t from-gray-300 to-white">
-              TrendWrite
+              BlogX
             </span>
             !
           </h1>

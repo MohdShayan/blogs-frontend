@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+
 
 const SingleBlog = () => {
   const { blogId } = useParams();
@@ -99,7 +103,19 @@ const SingleBlog = () => {
         </div>
 
         {/* Blog Content */}
-        <p className="text-lg leading-relaxed whitespace-pre-wrap">{blog.body}</p>
+<ReactMarkdown
+  remarkPlugins={[remarkGfm]}
+  rehypePlugins={[rehypeRaw]}
+  components={{
+    h1: ({node, ...props}) => <h1 className="text-3xl font-bold my-4" {...props} />,
+    h2: ({node, ...props}) => <h2 className="text-2xl font-semibold my-3" {...props} />,
+    p: ({node, ...props}) => <p className="text-lg leading-relaxed my-2" {...props} />,
+    li: ({node, ...props}) => <li className="ml-5 list-disc" {...props} />,
+    strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+  }}
+>
+  {blog.body}
+</ReactMarkdown>
 
         {/* Comments Section */}
         <div className="mt-12">

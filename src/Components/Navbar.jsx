@@ -65,10 +65,9 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div className="hidden lg:flex items-center space-x-2 text-sm font-medium">
           {[
-            { href: "/#home", label: "Home" },
+            { href: "/home", label: "Home" },
             { href: "/#about", label: "About" },
             { href: "/#howitworks", label: "Working" },
-            { href: "/blogs", label: "Blogs" },
             { href: "/write", label: "Write Blog" },
 
           ].map((item) => (

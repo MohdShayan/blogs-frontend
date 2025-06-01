@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import Navbar from "../Components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
@@ -8,6 +9,8 @@ const CreateBlog = () => {
   const [coverImage, setCoverImage] = useState(null);
   const [message, setMessage] = useState("");
   const textareaRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleBodyChange = (e) => {
     setBody(e.target.value);
@@ -45,7 +48,7 @@ const CreateBlog = () => {
       const countdownInterval = setInterval(() => {
         if (countdown === 0) {
           clearInterval(countdownInterval);
-          window.location.href = "/blogs"; // redirect
+          window.location.href = "/home"; // redirect
         } else {
           setMessage(`✅ Blog created successfully! Redirecting in ${countdown}...`);
           countdown--;
@@ -62,12 +65,15 @@ const CreateBlog = () => {
       <Navbar />
       <div className="min-h-screen bg-[#101720] text-white py-10 pt-18 flex justify-center px-4">
         <div className="w-full max-w-4xl bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-lg text-white flex flex-col">
-          <h2 className="text-2xl font-bold text-center mb-4">
-            Create New{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-t from-gray-300 to-white">
-              Blog Post
-            </span>
-          </h2>
+        <div className="flex flex-row justify-between items-center mb-6 align-center">
+          <h1 className="text-3xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-100 to-white">
+              Create New Blog Post
+            </h1>
+          <div>
+            <button onClick={()=>{navigate('/schedule')}} className=" p-3 bg-gradient-to-t from-blue-300 via-blue-100 to-white text-black font-semibold py-2 rounded-xl hover:from-blue-400 hover:via-blue-200 transition duration-150 cursor-pointer shadow-lg hover:shadow-blue-300/30">Schedule Blog</button>
+          </div>
+        </div>
+          
 
           {message && (
             <p className="text-sm text-center mb-4 text-blue-300">{message}</p>

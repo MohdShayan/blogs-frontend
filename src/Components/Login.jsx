@@ -65,7 +65,7 @@ const Login = () => {
         <h2 className="text-3xl font-bold text-white text-center mb-6">
           Log In to{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-t from-gray-300 to-white">
-            TrendWrite
+            BlogX
           </span>
         </h2>
 

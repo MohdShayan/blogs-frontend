@@ -10,6 +10,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthProvider } from "./authContext";
 import CreateBlog from "./pages/CreateBlog";
 import MyBlogs from "./pages/MyBlogs";
+import ScheduleBlogs from "./pages/ScheduleBlogs";
 
 const Main = () => {
   return (
@@ -18,13 +19,14 @@ const Main = () => {
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/schedule" element={<ScheduleBlogs />} />
 
         {/* Protected Routes */}
         <Route
           path="/home"
           element={
             <ProtectedRoute>
-              <Home />
+              <AllBlogs />
             </ProtectedRoute>
           }
         />
@@ -36,14 +38,7 @@ const Main = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/blogs"
-          element={
-            <ProtectedRoute>
-              <AllBlogs />
-            </ProtectedRoute>
-          }
-        />
+
         <Route
           path="/blogs/:blogId"
           element={
