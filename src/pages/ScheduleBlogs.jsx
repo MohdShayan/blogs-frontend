@@ -104,7 +104,7 @@ const ScheduleBlogs = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 className="bg-gradient-to-t from-blue-300 via-blue-100 to-white text-black font-semibold px-6 py-2 rounded-full shadow-lg hover:from-blue-400 hover:via-blue-200 transition duration-150"
-                onClick={() => navigate("/blogs")}
+                onClick={() => navigate("/home")}
               >
                 📰 All Articles
               </button>
