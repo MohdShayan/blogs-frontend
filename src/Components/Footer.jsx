@@ -62,7 +62,7 @@ const Footer = () => {
               <div>
                 <a
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/careers"
+                  href="#"
                 >
                   Careers
                 </a>
@@ -70,7 +70,7 @@ const Footer = () => {
               <div>
                 <a
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/contact"
+                  href="#"
                 >
                   Contact
                 </a>
@@ -88,7 +88,15 @@ const Footer = () => {
               <div>
                 <a
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/privacy-policy"
+                  href="https://console.groq.com/home" target="_blank" rel="noopener noreferrer"
+                >
+                  GROQ API
+                </a>
+              </div>
+              <div>
+                <a
+                  className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
+                  href="/#"
                 >
                   Privacy Policy
                 </a>
@@ -96,19 +104,12 @@ const Footer = () => {
               <div>
                 <a
                   className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/terms"
+                  href="/#"
                 >
                   Terms of Service
                 </a>
               </div>
-              <div>
-                <a
-                  className="hover:underline hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
-                  href="/security"
-                >
-                  Security
-                </a>
-              </div>
+            
             </div>
           </div>
         </div>
