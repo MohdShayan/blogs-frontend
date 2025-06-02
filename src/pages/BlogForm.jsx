@@ -23,7 +23,7 @@ const BlogForm = () => {
         withCredentials: true, 
       })
 
-      console.log('Blog Created:', res.data)
+      
       setMessage('✅ Blog created successfully!')
       
     } catch (err) {

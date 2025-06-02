@@ -12,6 +12,7 @@ const AllBlogs = () => {
       const response = await axios.get("https://blogs-backend-production.up.railway.app/api/blogs", {
         withCredentials: true,
       });
+      
       setBlogs(response.data.data.allBlogs);
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -78,7 +79,15 @@ const AllBlogs = () => {
                     <div className="text-xs text-white/50 flex justify-between items-center">
                       <span>By: {blog.createdBy?.name || "Unknown"}</span>
                       <span>
-                        {new Date(blog.createdAt).toLocaleDateString()}
+                        {new Date(blog.publishAt).toLocaleDateString(
+                          "en-IN",
+                          {
+                            timeZone: "Asia/Kolkata",
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          }
+                        )}
                       </span>
                     </div>
                   </div>

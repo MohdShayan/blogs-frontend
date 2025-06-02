@@ -69,6 +69,7 @@ const ScheduleBlogs = () => {
       const res = await axios.get("https://blogs-backend-production.up.railway.app/api/scheduled", {
         withCredentials: true,
       });
+      
       setScheduledBlogs(res.data.data.scheduledBlogs || []);
     } catch (error) {
       console.error("Error fetching scheduled blogs:", error);
@@ -209,7 +210,17 @@ const ScheduleBlogs = () => {
                     <div className="text-xs text-white/50 flex justify-between items-center">
                       <span>By: {blog.createdBy?.name || "Unknown"}</span>
                       <span>
-                        Scheduled at: {new Date(blog.publishAt).toLocaleString()}
+                          Scheduled at:{" "}
+                          {new Date(blog.publishAt).toLocaleString("en-IN", {
+                            timeZone: "Asia/Kolkata",
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit"
+                            
+                          })
+                          }
                       </span>
                     </div>
                   </div>

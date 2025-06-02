@@ -12,6 +12,7 @@ const MyBlogs = () => {
       const res = await axios.get("https://blogs-backend-production.up.railway.app/api/myblogs", {
         withCredentials: true,
       });
+      
       setMyBlogs(res.data.data.myBlogs);
     } catch (error) {
       console.error("Error fetching your blogs:", error);
@@ -78,7 +79,15 @@ const MyBlogs = () => {
                     <div className="text-xs text-white/50 flex justify-between items-center">
                       <span>By: You</span>
                       <span>
-                        {new Date(blog.createdAt).toLocaleDateString()}
+                        {new Date(blog.createdAt).toLocaleDateString(
+                          "en-IN",
+                          {
+                            timeZone: "Asia/Kolkata",
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          }
+                        )}
                       </span>
                     </div>
                   </div>

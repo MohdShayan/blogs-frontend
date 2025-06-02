@@ -31,7 +31,7 @@ const Signup = () => {
         { withCredentials: true }
       );
 
-      console.log("Signup successful:", response.data);
+      
 
       if (response.data.success) {
         navigate("/login"); // redirect to login on success
